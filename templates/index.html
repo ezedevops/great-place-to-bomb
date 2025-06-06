@@ -649,6 +649,167 @@
             transform: scale(0.95);
         }
 
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            /* Cards más compactas en mobile */
+            .bomb-item, .ranking-item {
+                flex-direction: column;
+                padding: 1rem !important;
+                margin-bottom: 0.8rem;
+            }
+
+            /* Texto de reviews más corto en mobile */
+            .bomb-comment, .ranking-comment {
+                font-size: 0.9rem !important;
+                line-height: 1.4;
+                max-height: 4.2em; /* 3 líneas máximo */
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                cursor: pointer;
+                transition: max-height 0.3s ease;
+                position: relative;
+            }
+
+            /* Estado expandido del texto */
+            .expandable-text.expanded {
+                max-height: none !important;
+                -webkit-line-clamp: unset !important;
+                overflow: visible !important;
+            }
+
+            /* Indicador visual de que se puede expandir */
+            .expandable-text:not(.expanded)::after {
+                content: " 👆";
+                font-size: 0.7rem;
+                opacity: 0.7;
+                color: #ff4757;
+            }
+
+            /* Ratings más compactos */
+            .ratings-detail {
+                font-size: 0.75rem !important;
+            }
+
+            .rating-item {
+                margin-right: 0.5rem !important;
+                margin-bottom: 0.3rem;
+            }
+
+            /* Navegación de reviews más pequeña */
+            .review-navigation {
+                margin-top: 0.3rem;
+                gap: 0.3rem;
+            }
+
+            .review-nav-btn {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+
+            .review-indicator {
+                font-size: 0.6rem !important;
+                padding: 1px 4px;
+            }
+
+            /* Botones más grandes para touch */
+            .btn, .show-more-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+            }
+
+            /* Rating stars más pequeños */
+            .ranking-rating, .bomb-rating {
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
+            .ranking-score {
+                font-size: 1.5rem !important;
+            }
+
+            /* Empresa names más pequeños */
+            .bomb-company, .ranking-company-name {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.3rem;
+            }
+
+            /* Medallas más pequeñas */
+            .ranking-medal {
+                font-size: 1.5rem !important;
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            /* Stats más compactos */
+            .ranking-stats {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.3rem;
+            }
+
+            /* Formularios en mobile */
+            .comment-textarea {
+                min-height: 100px !important;
+                font-size: 0.9rem;
+            }
+
+            .rating-section h4 {
+                font-size: 1rem !important;
+            }
+
+            /* Captcha más pequeño */
+            .captcha-section {
+                padding: 1rem !important;
+            }
+
+            .captcha-container {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .captcha-input {
+                width: 60px;
+            }
+        }
+
+        /* Mobile muy pequeño */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .bomb-comment, .ranking-comment {
+                -webkit-line-clamp: 2; /* Solo 2 líneas en móviles muy pequeños */
+                max-height: 2.8em;
+            }
+
+            .rankings-grid, .recent-grid {
+                gap: 0.5rem;
+            }
+        }
+
         .ranking-item {
             display: flex;
             align-items: center;

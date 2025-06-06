@@ -458,7 +458,7 @@ async function updateRecentBombs(limit = 5) {
                 <div class="bomb-item">
                     <div style="flex: 1;">
                         <div class="bomb-company">${review.company_name}</div>
-                        <div class="bomb-comment">
+                        <div class="bomb-comment expandable-text" onclick="toggleText(this)">
                             "${review.comment}"
                         </div>
                         ${ratingsDetail}
@@ -533,6 +533,9 @@ function changeReview(reviewId, direction) {
         reviewElement.dataset.current = currentIndex;
         reviewElement.innerHTML = `"${comments[currentIndex]}"`;
         
+        // Resetear estado expandido
+        reviewElement.classList.remove('expanded');
+        
         // Actualizar indicador
         const indicator = reviewElement.parentElement.querySelector('.review-indicator');
         if (indicator) {
@@ -540,6 +543,20 @@ function changeReview(reviewId, direction) {
         }
     } catch (error) {
         console.error('Error cambiando review:', error);
+    }
+}
+
+// Función para expandir/contraer texto en mobile
+function toggleText(element) {
+    // Solo en mobile (pantallas pequeñas)
+    if (window.innerWidth > 768) return;
+    
+    event.stopPropagation(); // Evitar que se active en los botones de navegación
+    
+    if (element.classList.contains('expanded')) {
+        element.classList.remove('expanded');
+    } else {
+        element.classList.add('expanded');
     }
 }
 
@@ -594,7 +611,7 @@ async function updateWorstCompaniesRanking(limit = 10) {
             // Si hay múltiples reviews, agregar navegación
             const reviewSection = item.all_comments && item.all_comments.length > 1 ? 
                 `<div class="ranking-comment-container">
-                    <div class="ranking-comment rotating-review" id="${reviewId}" data-comments='${JSON.stringify(item.all_comments)}' data-current="0">
+                    <div class="ranking-comment rotating-review expandable-text" id="${reviewId}" data-comments='${JSON.stringify(item.all_comments)}' data-current="0" onclick="toggleText(this)">
                         "${item.all_comments[0]}"
                     </div>
                     <div class="review-navigation">
@@ -603,7 +620,7 @@ async function updateWorstCompaniesRanking(limit = 10) {
                         <button class="review-nav-btn" onclick="changeReview('${reviewId}', 1)">→</button>
                     </div>
                 </div>` :
-                `<div class="ranking-comment">"${item.latest_comment}"</div>`;
+                `<div class="ranking-comment expandable-text" onclick="toggleText(this)">"${item.latest_comment}"</div>`;
 
             return `
                 <div class="ranking-item ${topClass}">
@@ -993,4 +1010,5 @@ window.showAddCompanyForm = showAddCompanyForm;
 window.hideAddCompanyForm = hideAddCompanyForm;
 window.submitNewCompany = submitNewCompany;
 window.loadMoreRanking = loadMoreRanking;
-window.changeReview = changeReview; 
+window.changeReview = changeReview;
+window.toggleText = toggleText; 
