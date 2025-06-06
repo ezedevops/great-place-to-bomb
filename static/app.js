@@ -301,6 +301,20 @@ async function submitReview() {
         return;
     }
 
+    // Validar límite máximo de caracteres
+    if (comment.length > 800) {
+        showToast('El comentario no puede superar los 800 caracteres. ¡Resumí un poco!', 'error');
+        return;
+    }
+
+    // Validar captcha
+    if (!validateCaptcha()) {
+        showToast('🤖 Respuesta del captcha incorrecta. ¡Inténtalo de nuevo!', 'error');
+        generateCaptcha(); // Generar nuevo captcha
+        document.getElementById('captchaAnswer').value = '';
+        return;
+    }
+
     // Mostrar loading
     const submitBtn = document.querySelector('.submit-btn');
     const originalText = submitBtn.innerHTML;
@@ -377,6 +391,12 @@ function resetForm() {
     document.getElementById('voteSection').style.display = 'none';
     document.getElementById('companySearch').value = '';
     
+    // Resetear captcha y contador
+    generateCaptcha();
+    document.getElementById('captchaAnswer').value = '';
+    const counter = document.getElementById('charCounter');
+    if (counter) counter.textContent = '0/800 caracteres';
+    
     // Scroll hacia arriba
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -389,11 +409,15 @@ function resetRatings() {
     });
 }
 
+// Variables para paginación de reviews recientes
+let currentReviewsLimit = 5;
+let allReviewsLoaded = false;
+
 // Actualizar reviews recientes
-async function updateRecentBombs() {
+async function updateRecentBombs(limit = 5) {
     try {
-        console.log('Cargando reviews recientes...');
-        const response = await fetch('/api/reviews/recent?limit=5');
+        console.log(`Cargando reviews recientes (limit: ${limit})...`);
+        const response = await fetch(`/api/reviews/recent?limit=${limit}`);
         
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -430,8 +454,8 @@ async function updateRecentBombs() {
                 <div class="bomb-item">
                     <div style="flex: 1;">
                         <div class="bomb-company">${review.company_name}</div>
-                        <div style="color: #666; font-size: 0.9rem; margin-top: 0.25rem;">
-                            "${review.comment.substring(0, 80)}${review.comment.length > 80 ? '...' : ''}"
+                        <div class="bomb-comment">
+                            "${review.comment}"
                         </div>
                         ${ratingsDetail}
                         <div style="color: #999; font-size: 0.8rem; margin-top: 0.5rem;">
@@ -447,7 +471,23 @@ async function updateRecentBombs() {
             `;
         }).join('');
 
-        recentBombsContainer.innerHTML = recentReviews;
+        // Verificar si hay más reviews para cargar
+        allReviewsLoaded = reviews.length < limit;
+        
+        // Agregar botón "Ver más" si no están todos cargados
+        const showMoreButton = !allReviewsLoaded ? `
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button onclick="loadMoreReviews()" class="show-more-btn">
+                    <i class="fas fa-plus-circle"></i> Ver más explosiones
+                </button>
+            </div>
+        ` : `
+            <div style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">
+                <i class="fas fa-check-circle"></i> No hay más explosiones por ahora
+            </div>
+        `;
+
+        recentBombsContainer.innerHTML = recentReviews + showMoreButton;
     } catch (error) {
         console.error('Error cargando reviews recientes:', error);
         const recentBombsContainer = document.getElementById('recentBombs');
@@ -460,6 +500,12 @@ async function updateRecentBombs() {
             `;
         }
     }
+}
+
+// Cargar más reviews
+function loadMoreReviews() {
+    currentReviewsLimit += 5;
+    updateRecentBombs(currentReviewsLimit);
 }
 
 // Actualizar ranking de peores empresas
@@ -683,7 +729,75 @@ function activateUltraBombMode() {
     }, 5000);
 }
 
+// Variables para captcha
+let captchaAnswer = 0;
+
+// Contador de caracteres
+function setupCharCounter() {
+    const textarea = document.getElementById('commentText');
+    const counter = document.getElementById('charCounter');
+    
+    if (!textarea || !counter) return;
+    
+    textarea.addEventListener('input', function() {
+        const current = this.value.length;
+        const max = 800;
+        
+        counter.textContent = `${current}/${max} caracteres`;
+        
+        // Cambiar color según el límite
+        counter.className = 'char-counter';
+        if (current > max * 0.8) {
+            counter.classList.add('warning');
+        }
+        if (current > max * 0.95) {
+            counter.classList.add('danger');
+        }
+    });
+}
+
+// Generar captcha matemático
+function generateCaptcha() {
+    const question = document.getElementById('captchaQuestion');
+    if (!question) return;
+    
+    const num1 = Math.floor(Math.random() * 20) + 1;
+    const num2 = Math.floor(Math.random() * 20) + 1;
+    const operations = ['+', '-', '*'];
+    const operation = operations[Math.floor(Math.random() * operations.length)];
+    
+    let result;
+    let questionText;
+    
+    switch(operation) {
+        case '+':
+            result = num1 + num2;
+            questionText = `¿Cuánto es ${num1} + ${num2}?`;
+            break;
+        case '-':
+            result = Math.max(num1, num2) - Math.min(num1, num2);
+            questionText = `¿Cuánto es ${Math.max(num1, num2)} - ${Math.min(num1, num2)}?`;
+            break;
+        case '*':
+            const smallNum1 = Math.floor(Math.random() * 10) + 1;
+            const smallNum2 = Math.floor(Math.random() * 10) + 1;
+            result = smallNum1 * smallNum2;
+            questionText = `¿Cuánto es ${smallNum1} × ${smallNum2}?`;
+            break;
+    }
+    
+    captchaAnswer = result;
+    question.textContent = questionText;
+}
+
+// Validar captcha
+function validateCaptcha() {
+    const userAnswer = parseInt(document.getElementById('captchaAnswer').value);
+    return userAnswer === captchaAnswer;
+}
+
 // Inicialización
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Iniciando Great Place to Bomb...');
     
@@ -691,6 +805,8 @@ document.addEventListener('DOMContentLoaded', function() {
         loadStats();
         setupSearch();
         setupRatingSystem();
+        setupCharCounter();
+        generateCaptcha();
         updateRecentBombs();
         updateWorstCompaniesRanking();
         addEasterEggs();

@@ -3,12 +3,49 @@ import sqlite3
 import json
 from datetime import datetime
 import os
+import bleach
+import re
 
 app = Flask(__name__)
 
 # Configuración
 DATABASE = 'bomb_reviews.db'
 app.config['SECRET_KEY'] = 'great-place-to-bomb-secret-key'
+
+# Configuración de seguridad para sanitización
+ALLOWED_TAGS = []  # No permitir ningún tag HTML
+ALLOWED_ATTRIBUTES = {}
+
+def sanitize_input(text):
+    """Sanitizar entrada de usuario"""
+    if not text:
+        return text
+    
+    # Limpiar HTML/XSS
+    cleaned = bleach.clean(text, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, strip=True)
+    
+    # Remover caracteres potencialmente peligrosos
+    cleaned = re.sub(r'[<>&"\']', '', cleaned)
+    
+    # Limitar longitud
+    if len(cleaned) > 800:
+        cleaned = cleaned[:800]
+    
+    return cleaned.strip()
+
+def validate_comment(comment):
+    """Validar comentario"""
+    if not comment or len(comment.strip()) < 10:
+        return False, "El comentario debe tener al menos 10 caracteres"
+    
+    if len(comment) > 800:
+        return False, "El comentario no puede superar los 800 caracteres"
+    
+    # Verificar si contiene solo caracteres válidos
+    if not re.match(r'^[a-zA-Z0-9\s\.,;:!¿?\(\)\-\'"ñÑáéíóúÁÉÍÓÚüÜ]+$', comment):
+        return False, "El comentario contiene caracteres no permitidos"
+    
+    return True, ""
 
 def init_db():
     """Inicializar la base de datos"""
@@ -110,9 +147,21 @@ def submit_review():
     try:
         data = request.json
         
-        # Validar datos
+        # Validar datos básicos
         if not data.get('company') or not data.get('comment'):
             return jsonify({'error': 'Datos incompletos'}), 400
+        
+        # Sanitizar y validar comentario
+        raw_comment = data.get('comment', '').strip()
+        comment = sanitize_input(raw_comment)
+        
+        is_valid, error_msg = validate_comment(comment)
+        if not is_valid:
+            return jsonify({'error': error_msg}), 400
+        
+        # Validar que no sea spam (comentarios muy repetitivos)
+        if len(set(comment.split())) < len(comment.split()) * 0.3:
+            return jsonify({'error': 'El comentario parece spam o muy repetitivo'}), 400
         
         # Calcular promedio
         ratings = data.get('ratings', {})
@@ -136,7 +185,7 @@ def submit_review():
             ratings.get('salary', 0),
             ratings.get('environment', 0),
             avg_rating,
-            data['comment'],
+            comment,  # Usar el comentario sanitizado
             request.remote_addr
         ))
         
@@ -266,14 +315,20 @@ def add_company():
     try:
         data = request.json
         
-        # Validar datos
+        # Validar y sanitizar datos
         if not data.get('name'):
             return jsonify({'error': 'El nombre de la empresa es requerido'}), 400
         
-        company_name = data['name'].strip()
-        industry = data.get('industry', '').strip()
-        location = data.get('location', '').strip()
-        description = data.get('description', '').strip()
+        company_name = sanitize_input(data['name'].strip())
+        industry = sanitize_input(data.get('industry', '').strip())
+        location = sanitize_input(data.get('location', '').strip())
+        description = sanitize_input(data.get('description', '').strip())
+        
+        # Validar longitudes
+        if len(company_name) < 2:
+            return jsonify({'error': 'El nombre debe tener al menos 2 caracteres'}), 400
+        if len(company_name) > 100:
+            return jsonify({'error': 'El nombre es muy largo (máximo 100 caracteres)'}), 400
         
         # Verificar si la empresa ya existe
         conn = sqlite3.connect(DATABASE)
