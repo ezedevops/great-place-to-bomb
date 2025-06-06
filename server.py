@@ -342,13 +342,5 @@ if __name__ == '__main__':
     init_db()
     load_companies_data()
     
-    # Cargar reviews argentinos automáticamente
-    from generate_funny_reviews import insert_reviews
-    try:
-        insert_reviews()
-        print("✅ Reviews argentinos cargados!")
-    except Exception as e:
-        print(f"⚠️ Error cargando reviews: {e}")
-    
     # Ejecutar en todas las interfaces para que otros puedan conectarse
     app.run(debug=True, host='0.0.0.0', port=5000) 
