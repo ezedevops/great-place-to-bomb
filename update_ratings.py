@@ -22,12 +22,12 @@ def update_existing_ratings():
     updated_count = 0
     
     for review_id, company_name in reviews:
-        # Generar ratings random más realistas (más variedad en rangos bajos)
+        # Generar ratings altos (3-5) porque son empresas MALAS para bombardear
         ratings = {
-            'general': random.choices([1, 2, 3, 4, 5], weights=[40, 30, 15, 10, 5])[0],
-            'management': random.choices([1, 2, 3, 4, 5], weights=[45, 25, 15, 10, 5])[0], 
-            'salary': random.choices([1, 2, 3, 4, 5], weights=[35, 25, 20, 15, 5])[0],
-            'environment': random.choices([1, 2, 3, 4, 5], weights=[40, 25, 20, 10, 5])[0]
+            'general': random.choices([3, 4, 5], weights=[20, 40, 40])[0],
+            'management': random.choices([3, 4, 5], weights=[15, 35, 50])[0], 
+            'salary': random.choices([3, 4, 5], weights=[25, 40, 35])[0],
+            'environment': random.choices([3, 4, 5], weights=[20, 45, 35])[0]
         }
         
         # Calcular promedio
