@@ -47,7 +47,7 @@ def init_db():
 
 def load_companies_data():
     """Cargar empresas desde JSON a la base de datos"""
-    json_file = '../glassdoor_companies_20_pages.json'
+    json_file = 'glassdoor_companies_20_pages.json'
     if os.path.exists(json_file):
         with open(json_file, 'r', encoding='utf-8') as f:
             companies = json.load(f)
