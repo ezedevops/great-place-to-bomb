@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Place to Bomb 💣 - Reviews Honestas de Empresas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff4757;
+            text-decoration: none;
+        }
+
+        .logo .bomb {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.5rem 2rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .search-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #ff4757;
+            box-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s ease;
+        }
+
+        .suggestion-item:hover {
+            background: #f8f9fa;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .vote-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .company-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .company-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .rating-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .rating-category:hover {
+            border-color: #ff4757;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .rating-title {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .stars {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 10;
+            align-items: center;
+        }
+
+        .star {
+            font-size: 1.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.2rem;
+            border-radius: 50%;
+            display: inline-block;
+            user-select: none;
+        }
+
+        .star:hover {
+            color: #ff4757;
+            transform: scale(1.2);
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+
+        .star.active {
+            color: #ff4757;
+            transform: scale(1.1);
+            text-shadow: 0 0 8px rgba(255, 71, 87, 0.3);
+        }
+
+        .stars:hover .star {
+            color: #ccc;
+        }
+
+        .comment-section {
+            margin: 2rem 0;
+        }
+
+        .comment-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            resize: vertical;
+            outline: none;
+        }
+
+        .comment-textarea:focus {
+            border-color: #ff4757;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .add-company-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .add-company-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #ff4757;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #28a745;
+        }
+
+        .form-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-textarea:focus {
+            border-color: #28a745;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .ranking-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 2rem;
+        }
+
+        .company-filter-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 2rem;
+        }
+
+        .filter-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .company-reviews-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .company-review-item {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .company-review-item:hover {
+            border-color: #ff4757;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .review-user {
+            font-size: 0.9rem;
+            color: #666;
+            background: #e9ecef;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .review-score {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff4757;
+        }
+
+        .review-comment {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff4757;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .no-reviews {
+            text-align: center;
+            color: #666;
+            padding: 3rem;
+            font-style: italic;
+        }
+
+        .recent-bombs {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 2rem;
+        }
+
+        .bomb-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: background 0.2s ease;
+        }
+
+        .bomb-item:hover {
+            background: #f8f9fa;
+        }
+
+        .bomb-item:last-child {
+            border-bottom: none;
+        }
+
+        .bomb-company {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .bomb-rating {
+            color: #ff4757;
+            font-weight: bold;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ranking-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .ranking-item.top-3 {
+            border: 3px solid #ff4757;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+        }
+
+        .ranking-position {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .ranking-position.first {
+            color: #ff4757;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+
+        .ranking-position.second {
+            color: #ff6b7a;
+        }
+
+        .ranking-position.third {
+            color: #ff8991;
+        }
+
+        .ranking-company-info {
+            flex: 1;
+        }
+
+        .ranking-company-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .ranking-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .ranking-comment {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .ratings-detail {
+            background: rgba(255, 71, 87, 0.1);
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            border-left: 3px solid #ff4757;
+        }
+
+        .rating-item {
+            display: inline-block;
+            margin-right: 0.75rem;
+            font-size: 0.85rem;
+            background: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .ranking-rating {
+            text-align: right;
+            min-width: 100px;
+        }
+
+        .ranking-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin-bottom: 0.25rem;
+        }
+
+        .ranking-level {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .ranking-level-text {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            opacity: 0.8;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #ff4757;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .rating-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span class="bomb">💣</span> Great Place to Bomb
+                <span class="subtitle">Reviews honestas que explotan</span>
+            </a>
+        </nav>
+        <div class="stats-bar">
+            <span id="statsInfo">Cargando estadísticas...</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero">
+            <h1>¿Tu empresa es una bomba? 💥</h1>
+            <p>Comparte tu experiencia honesta y ayuda a otros a evitar explosiones laborales</p>
+        </section>
+
+        <section class="search-section">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #333;">
+                <i class="fas fa-search"></i> Busca tu empresa
+            </h2>
+            <div class="search-container">
+                <i class="fas fa-building search-icon"></i>
+                <input type="text" class="search-input" id="companySearch" 
+                       placeholder="Escribe el nombre de tu empresa..." autocomplete="off">
+                <div class="suggestions" id="suggestions"></div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="add-company-btn" onclick="showAddCompanyForm()">
+                    <i class="fas fa-plus-circle"></i> ¿Tu empresa no está? ¡Agrégala aquí!
+                </button>
+            </div>
+        </section>
+
+        <section class="vote-section" id="voteSection">
+            <div class="company-info" id="companyInfo">
+                <div class="company-name" id="selectedCompanyName"></div>
+                <div>¿Qué tan bomba es esta empresa?</div>
+            </div>
+
+            <div class="rating-section">
+                <div class="rating-category">
+                    <div class="rating-title">💥 Factor Explosión General</div>
+                    <div class="stars" data-category="general">
+                        <i class="star fas fa-star" data-rating="1"></i>
+                        <i class="star fas fa-star" data-rating="2"></i>
+                        <i class="star fas fa-star" data-rating="3"></i>
+                        <i class="star fas fa-star" data-rating="4"></i>
+                        <i class="star fas fa-star" data-rating="5"></i>
+                    </div>
+                    <small>1 = Paraíso laboral, 5 = Bomba nuclear</small>
+                </div>
+
+                <div class="rating-category">
+                    <div class="rating-title">🤡 Management Payaso</div>
+                    <div class="stars" data-category="management">
+                        <i class="star fas fa-star" data-rating="1"></i>
+                        <i class="star fas fa-star" data-rating="2"></i>
+                        <i class="star fas fa-star" data-rating="3"></i>
+                        <i class="star fas fa-star" data-rating="4"></i>
+                        <i class="star fas fa-star" data-rating="5"></i>
+                    </div>
+                    <small>¿Qué tan circo es el management?</small>
+                </div>
+
+                <div class="rating-category">
+                    <div class="rating-title">💸 Explotación Salarial</div>
+                    <div class="stars" data-category="salary">
+                        <i class="star fas fa-star" data-rating="1"></i>
+                        <i class="star fas fa-star" data-rating="2"></i>
+                        <i class="star fas fa-star" data-rating="3"></i>
+                        <i class="star fas fa-star" data-rating="4"></i>
+                        <i class="star fas fa-star" data-rating="5"></i>
+                    </div>
+                    <small>¿Te pagan con monedas de chocolate?</small>
+                </div>
+
+                <div class="rating-category">
+                    <div class="rating-title">🔥 Ambiente Tóxico</div>
+                    <div class="stars" data-category="environment">
+                        <i class="star fas fa-star" data-rating="1"></i>
+                        <i class="star fas fa-star" data-rating="2"></i>
+                        <i class="star fas fa-star" data-rating="3"></i>
+                        <i class="star fas fa-star" data-rating="4"></i>
+                        <i class="star fas fa-star" data-rating="5"></i>
+                    </div>
+                    <small>¿Qué tan radioactivo es el ambiente?</small>
+                </div>
+            </div>
+
+            <div class="comment-section">
+                <h3 style="margin-bottom: 1rem;">💬 Cuenta tu experiencia explosiva:</h3>
+                <textarea class="comment-textarea" id="commentText" 
+                          placeholder="Escribe aquí tu review honesta... ¿Por qué esta empresa es una bomba? ¿Qué pasó que te hizo explotar? ¡Sin filtros!"></textarea>
+            </div>
+
+            <button class="submit-btn" onclick="submitReview()">
+                <i class="fas fa-bomb"></i> ¡BOMBARDEAR REVIEW!
+            </button>
+        </section>
+
+        <section class="ranking-section">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #333;">
+                <i class="fas fa-trophy" style="color: #ff4757;"></i> Ranking: Las Peores Bombas 💀
+            </h2>
+            <div id="worstCompaniesRanking">
+                <!-- El ranking de peores empresas aparecerá aquí -->
+            </div>
+        </section>
+
+        <section class="company-filter-section">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #333;">
+                <i class="fas fa-filter"></i> Filtrar por Empresa
+            </h2>
+            <div class="filter-container">
+                <i class="fas fa-building search-icon"></i>
+                <input type="text" class="search-input" id="companyFilter" 
+                       placeholder="Busca una empresa para ver todos sus reviews..." autocomplete="off">
+                <div class="suggestions" id="filterSuggestions"></div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="add-company-btn" onclick="showAddCompanyForm()">
+                    <i class="fas fa-plus-circle"></i> ¿Tu empresa no está? ¡Agrégala aquí!
+                </button>
+            </div>
+            <div id="companyReviews" style="display: none;">
+                <div id="companyReviewsHeader"></div>
+                <div id="companyReviewsList"></div>
+            </div>
+        </section>
+
+        <section class="recent-bombs">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #333;">
+                <i class="fas fa-fire"></i> Últimas Explosiones
+            </h2>
+            <div id="recentBombs">
+                <!-- Los reviews recientes aparecerán aquí -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 Great Place to Bomb 💣 - "Donde las verdades explotan"</p>
+        <p><small>Parodia con fines humorísticos. Basado en datos reales de empresas.</small></p>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i> <span id="toastMessage">¡Review enviado! Gracias por tu explosiva honestidad.</span>
+    </div>
+
+    <!-- Modal para agregar nueva empresa -->
+    <div class="modal" id="addCompanyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideAddCompanyForm()">&times;</button>
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle" style="color: #28a745;"></i> Agregar Nueva Empresa</h2>
+                <p>¿Tu empresa no está en nuestra lista? ¡Agrégala para poder bombardearla!</p>
+            </div>
+            
+            <form id="addCompanyForm" onsubmit="submitNewCompany(event)">
+                <div class="form-group">
+                    <label class="form-label" for="newCompanyName">
+                        <i class="fas fa-building"></i> Nombre de la empresa *
+                    </label>
+                    <input type="text" id="newCompanyName" class="form-input" 
+                           placeholder="Ej: Mi Empresa Malvada S.A." required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="newCompanyIndustry">
+                        <i class="fas fa-industry"></i> Industria (opcional)
+                    </label>
+                    <input type="text" id="newCompanyIndustry" class="form-input" 
+                           placeholder="Ej: Tecnología, Consultoría, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="newCompanyLocation">
+                        <i class="fas fa-map-marker-alt"></i> Ubicación (opcional)
+                    </label>
+                    <input type="text" id="newCompanyLocation" class="form-input" 
+                           placeholder="Ej: Buenos Aires, Argentina">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="newCompanyDescription">
+                        <i class="fas fa-info-circle"></i> Descripción breve (opcional)
+                    </label>
+                    <textarea id="newCompanyDescription" class="form-textarea" 
+                              placeholder="Breve descripción de qué hace la empresa..."></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    <i class="fas fa-rocket"></i> ¡Crear Empresa y Bombardear!
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html> 

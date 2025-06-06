@@ -1,0 +1,1202 @@
+[
+  {
+    "id": 4138,
+    "shortName": "Accenture",
+    "overallRating": 3.8,
+    "page_found": 1
+  },
+  {
+    "id": 432,
+    "shortName": "McDonald's",
+    "overallRating": 3.6,
+    "page_found": 1
+  },
+  {
+    "id": 8450,
+    "shortName": "PwC",
+    "overallRating": 3.8,
+    "page_found": 1
+  },
+  {
+    "id": 2784,
+    "shortName": "EY",
+    "overallRating": 3.7,
+    "page_found": 1
+  },
+  {
+    "id": 354,
+    "shortName": "IBM",
+    "overallRating": 3.9,
+    "page_found": 1
+  },
+  {
+    "id": 2763,
+    "shortName": "Deloitte",
+    "overallRating": 3.9,
+    "page_found": 1
+  },
+  {
+    "id": 8014,
+    "shortName": "Cognizant Technology Solutions",
+    "overallRating": 3.6,
+    "page_found": 1
+  },
+  {
+    "id": 9779,
+    "shortName": "TP",
+    "overallRating": 4.3,
+    "page_found": 1
+  },
+  {
+    "id": 2867,
+    "shortName": "KPMG",
+    "overallRating": 3.7,
+    "page_found": 1
+  },
+  {
+    "id": 715,
+    "shortName": "Walmart",
+    "overallRating": 3.4,
+    "page_found": 1
+  },
+  {
+    "id": 150678,
+    "shortName": "Globant",
+    "overallRating": 3.9,
+    "page_found": 2
+  },
+  {
+    "id": 2202,
+    "shortName": "Starbucks",
+    "overallRating": 3.6,
+    "page_found": 2
+  },
+  {
+    "id": 9079,
+    "shortName": "Google",
+    "overallRating": 4.3,
+    "page_found": 2
+  },
+  {
+    "id": 392261,
+    "shortName": "Freelancer",
+    "overallRating": 4.2,
+    "page_found": 2
+  },
+  {
+    "id": 5224839,
+    "shortName": "JPMorganChase",
+    "overallRating": 3.8,
+    "page_found": 2
+  },
+  {
+    "id": 10471,
+    "shortName": "SAP",
+    "overallRating": 4.2,
+    "page_found": 2
+  },
+  {
+    "id": 3118,
+    "shortName": "Carrefour",
+    "overallRating": 3.7,
+    "page_found": 2
+  },
+  {
+    "id": 7201,
+    "shortName": "Burger King",
+    "overallRating": 3.4,
+    "page_found": 2
+  },
+  {
+    "id": 1737,
+    "shortName": "Oracle",
+    "overallRating": 3.8,
+    "page_found": 2
+  },
+  {
+    "id": 237,
+    "shortName": "ExxonMobil",
+    "overallRating": 3.6,
+    "page_found": 2
+  },
+  {
+    "id": 3482,
+    "shortName": "HSBC",
+    "overallRating": 3.8,
+    "page_found": 3
+  },
+  {
+    "id": 145,
+    "shortName": "J.P. Morgan",
+    "overallRating": 4.0,
+    "page_found": 3
+  },
+  {
+    "id": 3513,
+    "shortName": "Unilever",
+    "overallRating": 4.0,
+    "page_found": 3
+  },
+  {
+    "id": 6036,
+    "shortName": "Amazon",
+    "overallRating": 3.6,
+    "page_found": 3
+  },
+  {
+    "id": 3803,
+    "shortName": "Capgemini",
+    "overallRating": 3.8,
+    "page_found": 3
+  },
+  {
+    "id": 1603125,
+    "shortName": "DXC Technology",
+    "overallRating": 3.5,
+    "page_found": 3
+  },
+  {
+    "id": 733147,
+    "shortName": "Atento",
+    "overallRating": 3.5,
+    "page_found": 3
+  },
+  {
+    "id": 11159,
+    "shortName": "Salesforce",
+    "overallRating": 4.1,
+    "page_found": 3
+  },
+  {
+    "id": 8347,
+    "shortName": "IQVIA",
+    "overallRating": 3.8,
+    "page_found": 3
+  },
+  {
+    "id": 613,
+    "shortName": "AT&T",
+    "overallRating": 3.4,
+    "page_found": 3
+  },
+  {
+    "id": 1651,
+    "shortName": "Microsoft",
+    "overallRating": 4.2,
+    "page_found": 4
+  },
+  {
+    "id": 1327,
+    "shortName": "Dell Technologies",
+    "overallRating": 3.8,
+    "page_found": 4
+  },
+  {
+    "id": 7649,
+    "shortName": "NTT DATA",
+    "overallRating": 3.8,
+    "page_found": 4
+  },
+  {
+    "id": 748887,
+    "shortName": "Claro",
+    "overallRating": 4.1,
+    "page_found": 4
+  },
+  {
+    "id": 717,
+    "shortName": "Walt Disney Company",
+    "overallRating": 3.9,
+    "page_found": 4
+  },
+  {
+    "id": 2372230,
+    "shortName": "Mercado Livre",
+    "overallRating": 4.2,
+    "page_found": 4
+  },
+  {
+    "id": 13461,
+    "shortName": "Tata Consultancy Services",
+    "overallRating": 3.7,
+    "page_found": 4
+  },
+  {
+    "id": 5833,
+    "shortName": "Shell",
+    "overallRating": 4.0,
+    "page_found": 4
+  },
+  {
+    "id": 522,
+    "shortName": "PepsiCo",
+    "overallRating": 3.9,
+    "page_found": 4
+  },
+  {
+    "id": 161,
+    "shortName": "The Coca-Cola Company",
+    "overallRating": 4.1,
+    "page_found": 4
+  },
+  {
+    "id": 100303,
+    "shortName": "Thomson Reuters",
+    "overallRating": 4.1,
+    "page_found": 5
+  },
+  {
+    "id": 302306,
+    "shortName": "Randstad",
+    "overallRating": 3.7,
+    "page_found": 5
+  },
+  {
+    "id": 1237,
+    "shortName": "BBVA",
+    "overallRating": 4.2,
+    "page_found": 5
+  },
+  {
+    "id": 6563240,
+    "shortName": "Mercado Libre",
+    "overallRating": 4.2,
+    "page_found": 5
+  },
+  {
+    "id": 3510,
+    "shortName": "Siemens",
+    "overallRating": 4.2,
+    "page_found": 5
+  },
+  {
+    "id": 35,
+    "shortName": "American Express",
+    "overallRating": 4.1,
+    "page_found": 5
+  },
+  {
+    "id": 10686,
+    "shortName": "Atos",
+    "overallRating": 3.5,
+    "page_found": 5
+  },
+  {
+    "id": 3492,
+    "shortName": "Nestlé",
+    "overallRating": 4.1,
+    "page_found": 5
+  },
+  {
+    "id": 1089,
+    "shortName": "Adecco",
+    "overallRating": 3.6,
+    "page_found": 5
+  },
+  {
+    "id": 8843,
+    "shortName": "Citi",
+    "overallRating": 3.7,
+    "page_found": 5
+  },
+  {
+    "id": 3604,
+    "shortName": "ypf",
+    "overallRating": 4.0,
+    "page_found": 6
+  },
+  {
+    "id": 263,
+    "shortName": "Ford Motor Company",
+    "overallRating": 4.0,
+    "page_found": 6
+  },
+  {
+    "id": 2469871,
+    "shortName": "Coto",
+    "overallRating": 3.7,
+    "page_found": 6
+  },
+  {
+    "id": 3736143,
+    "shortName": "Gobierno de la Ciudad de Buenos Aires",
+    "overallRating": 3.4,
+    "page_found": 6
+  },
+  {
+    "id": 3511,
+    "shortName": "Telefónica",
+    "overallRating": 4.1,
+    "page_found": 6
+  },
+  {
+    "id": 23009,
+    "shortName": "GlobalLogic",
+    "overallRating": 4.0,
+    "page_found": 6
+  },
+  {
+    "id": 544,
+    "shortName": "Procter & Gamble",
+    "overallRating": 4.1,
+    "page_found": 6
+  },
+  {
+    "id": 7508,
+    "shortName": "BDO",
+    "overallRating": 3.6,
+    "page_found": 6
+  },
+  {
+    "id": 3471,
+    "shortName": "Danone",
+    "overallRating": 4.0,
+    "page_found": 6
+  },
+  {
+    "id": 4245,
+    "shortName": "Bayer",
+    "overallRating": 3.9,
+    "page_found": 6
+  },
+  {
+    "id": 10999,
+    "shortName": "Itaú Unibanco (Itaú BBA e Rede)",
+    "overallRating": 4.4,
+    "page_found": 7
+  },
+  {
+    "id": 864485,
+    "shortName": "BairesDev",
+    "overallRating": 4.1,
+    "page_found": 7
+  },
+  {
+    "id": 2739,
+    "shortName": "Cargill",
+    "overallRating": 3.9,
+    "page_found": 7
+  },
+  {
+    "id": 10656,
+    "shortName": "Securitas",
+    "overallRating": 3.2,
+    "page_found": 7
+  },
+  {
+    "id": 4463465,
+    "shortName": "Stellantis",
+    "overallRating": 3.6,
+    "page_found": 7
+  },
+  {
+    "id": 9304,
+    "shortName": "Huawei Technologies",
+    "overallRating": 3.6,
+    "page_found": 7
+  },
+  {
+    "id": 279,
+    "shortName": "General Motors (GM)",
+    "overallRating": 3.7,
+    "page_found": 7
+  },
+  {
+    "id": 3956,
+    "shortName": "Schneider Electric",
+    "overallRating": 4.3,
+    "page_found": 7
+  },
+  {
+    "id": 364,
+    "shortName": "Johnson & Johnson",
+    "overallRating": 4.1,
+    "page_found": 7
+  },
+  {
+    "id": 3275,
+    "shortName": "Renault Group",
+    "overallRating": 3.9,
+    "page_found": 7
+  },
+  {
+    "id": 1699,
+    "shortName": "NIKE",
+    "overallRating": 4.0,
+    "page_found": 8
+  },
+  {
+    "id": 3470,
+    "shortName": "L'Oréal",
+    "overallRating": 4.1,
+    "page_found": 8
+  },
+  {
+    "id": 5908,
+    "shortName": "Telecom Argentina",
+    "overallRating": 3.9,
+    "page_found": 8
+  },
+  {
+    "id": 3477,
+    "shortName": "GSK",
+    "overallRating": 4.0,
+    "page_found": 8
+  },
+  {
+    "id": 575263,
+    "shortName": "Uber",
+    "overallRating": 3.8,
+    "page_found": 8
+  },
+  {
+    "id": 10807,
+    "shortName": "Prosegur",
+    "overallRating": 3.7,
+    "page_found": 8
+  },
+  {
+    "id": 7860,
+    "shortName": "KFC",
+    "overallRating": 3.4,
+    "page_found": 8
+  },
+  {
+    "id": 1519,
+    "shortName": "Intel Corporation",
+    "overallRating": 3.9,
+    "page_found": 8
+  },
+  {
+    "id": 3363,
+    "shortName": "Samsung Electronics",
+    "overallRating": 3.7,
+    "page_found": 8
+  },
+  {
+    "id": 40772,
+    "shortName": "Meta",
+    "overallRating": 3.8,
+    "page_found": 8
+  },
+  {
+    "id": 5882,
+    "shortName": "Coca-Cola FEMSA",
+    "overallRating": 4.1,
+    "page_found": 9
+  },
+  {
+    "id": 13524,
+    "shortName": "Chevron",
+    "overallRating": 3.9,
+    "page_found": 9
+  },
+  {
+    "id": 628257,
+    "shortName": "Mondelēz International",
+    "overallRating": 3.9,
+    "page_found": 9
+  },
+  {
+    "id": 9347,
+    "shortName": "Sanofi",
+    "overallRating": 4.2,
+    "page_found": 9
+  },
+  {
+    "id": 12,
+    "shortName": "Abbott",
+    "overallRating": 3.8,
+    "page_found": 9
+  },
+  {
+    "id": 588,
+    "shortName": "SLB",
+    "overallRating": 4.0,
+    "page_found": 9
+  },
+  {
+    "id": 15805,
+    "shortName": "Tenaris",
+    "overallRating": 4.0,
+    "page_found": 9
+  },
+  {
+    "id": 3776,
+    "shortName": "Nielsen",
+    "overallRating": 3.3,
+    "page_found": 9
+  },
+  {
+    "id": 716148,
+    "shortName": "Stefanini",
+    "overallRating": 3.8,
+    "page_found": 9
+  },
+  {
+    "id": 10692,
+    "shortName": "adidas",
+    "overallRating": 3.9,
+    "page_found": 9
+  },
+  {
+    "id": 222,
+    "shortName": "Ecolab",
+    "overallRating": 3.7,
+    "page_found": 10
+  },
+  {
+    "id": 108072,
+    "shortName": "Softtek",
+    "overallRating": 3.9,
+    "page_found": 10
+  },
+  {
+    "id": 4515355,
+    "shortName": "Autonomo",
+    "overallRating": 4.4,
+    "page_found": 10
+  },
+  {
+    "id": 3076,
+    "shortName": "ABB",
+    "overallRating": 4.0,
+    "page_found": 10
+  },
+  {
+    "id": 1093046,
+    "shortName": "Hewlett Packard Enterprise | HPE",
+    "overallRating": 4.0,
+    "page_found": 10
+  },
+  {
+    "id": 31549,
+    "shortName": "Concentrix",
+    "overallRating": 3.9,
+    "page_found": 10
+  },
+  {
+    "id": 12777,
+    "shortName": "Warner Bros. Discovery",
+    "overallRating": 3.6,
+    "page_found": 10
+  },
+  {
+    "id": 1275894,
+    "shortName": "Rappi",
+    "overallRating": 3.7,
+    "page_found": 10
+  },
+  {
+    "id": 1138,
+    "shortName": "Apple",
+    "overallRating": 4.1,
+    "page_found": 10
+  },
+  {
+    "id": 277,
+    "shortName": "GE",
+    "overallRating": 4.0,
+    "page_found": 10
+  },
+  {
+    "id": 2994,
+    "shortName": "Subway",
+    "overallRating": 3.4,
+    "page_found": 11
+  },
+  {
+    "id": 5334,
+    "shortName": "Parexel",
+    "overallRating": 4.0,
+    "page_found": 11
+  },
+  {
+    "id": 1425,
+    "shortName": "Cisco",
+    "overallRating": 4.1,
+    "page_found": 11
+  },
+  {
+    "id": 8034,
+    "shortName": "Lenovo",
+    "overallRating": 3.9,
+    "page_found": 11
+  },
+  {
+    "id": 5779,
+    "shortName": "Jones Lang LaSalle",
+    "overallRating": 3.8,
+    "page_found": 11
+  },
+  {
+    "id": 3515,
+    "shortName": "Volkswagen Group",
+    "overallRating": 4.2,
+    "page_found": 11
+  },
+  {
+    "id": 817400,
+    "shortName": "Grupo Arcor",
+    "overallRating": 3.9,
+    "page_found": 11
+  },
+  {
+    "id": 3496,
+    "shortName": "Philips",
+    "overallRating": 3.8,
+    "page_found": 11
+  },
+  {
+    "id": 1293891,
+    "shortName": "Toyota Motor Corporation",
+    "overallRating": 4.1,
+    "page_found": 11
+  },
+  {
+    "id": 3494,
+    "shortName": "Nokia",
+    "overallRating": 4.0,
+    "page_found": 11
+  },
+  {
+    "id": 1275051,
+    "shortName": "PedidosYa",
+    "overallRating": 4.0,
+    "page_found": 12
+  },
+  {
+    "id": 728,
+    "shortName": "Wendy's",
+    "overallRating": 3.4,
+    "page_found": 12
+  },
+  {
+    "id": 1384,
+    "shortName": "Fiserv",
+    "overallRating": 2.8,
+    "page_found": 12
+  },
+  {
+    "id": 1130527,
+    "shortName": "Freelance",
+    "overallRating": 4.2,
+    "page_found": 12
+  },
+  {
+    "id": 195,
+    "shortName": "John Deere",
+    "overallRating": 4.0,
+    "page_found": 12
+  },
+  {
+    "id": 383,
+    "shortName": "Kimberly-Clark",
+    "overallRating": 4.0,
+    "page_found": 12
+  },
+  {
+    "id": 345244,
+    "shortName": "Cencosud",
+    "overallRating": 3.8,
+    "page_found": 12
+  },
+  {
+    "id": 3160449,
+    "shortName": "freelance",
+    "overallRating": 4.2,
+    "page_found": 12
+  },
+  {
+    "id": 5905801,
+    "shortName": "Kyndryl",
+    "overallRating": 3.7,
+    "page_found": 12
+  },
+  {
+    "id": 2548,
+    "shortName": "Manpower",
+    "overallRating": 4.1,
+    "page_found": 12
+  },
+  {
+    "id": 3480,
+    "shortName": "Roche",
+    "overallRating": 4.2,
+    "page_found": 13
+  },
+  {
+    "id": 330,
+    "shortName": "Hilton",
+    "overallRating": 3.9,
+    "page_found": 13
+  },
+  {
+    "id": 5844,
+    "shortName": "Publicis Groupe",
+    "overallRating": 3.8,
+    "page_found": 13
+  },
+  {
+    "id": 4231,
+    "shortName": "BASF",
+    "overallRating": 4.1,
+    "page_found": 13
+  },
+  {
+    "id": 28,
+    "shortName": "Honeywell",
+    "overallRating": 4.1,
+    "page_found": 13
+  },
+  {
+    "id": 17544,
+    "shortName": "Zara",
+    "overallRating": 3.4,
+    "page_found": 13
+  },
+  {
+    "id": 7745,
+    "shortName": "Philip Morris International",
+    "overallRating": 3.9,
+    "page_found": 13
+  },
+  {
+    "id": 100134,
+    "shortName": "Grant Thornton",
+    "overallRating": 3.7,
+    "page_found": 13
+  },
+  {
+    "id": 7927,
+    "shortName": "Infosys",
+    "overallRating": 3.6,
+    "page_found": 13
+  },
+  {
+    "id": 553909,
+    "shortName": "HCLTech",
+    "overallRating": 3.6,
+    "page_found": 13
+  },
+  {
+    "id": 9960372,
+    "shortName": "Monks",
+    "overallRating": 3.5,
+    "page_found": 14
+  },
+  {
+    "id": 2899,
+    "shortName": "MetLife",
+    "overallRating": 3.9,
+    "page_found": 14
+  },
+  {
+    "id": 630179,
+    "shortName": "CONICET",
+    "overallRating": 3.6,
+    "page_found": 14
+  },
+  {
+    "id": 10416,
+    "shortName": "Boehringer Ingelheim",
+    "overallRating": 4.1,
+    "page_found": 14
+  },
+  {
+    "id": 42631,
+    "shortName": "Natura",
+    "overallRating": 4.2,
+    "page_found": 14
+  },
+  {
+    "id": 785355,
+    "shortName": "Raízen",
+    "overallRating": 4.0,
+    "page_found": 14
+  },
+  {
+    "id": 2469869,
+    "shortName": "Farmacity",
+    "overallRating": 3.8,
+    "page_found": 14
+  },
+  {
+    "id": 307,
+    "shortName": "Halliburton",
+    "overallRating": 3.7,
+    "page_found": 14
+  },
+  {
+    "id": 248324,
+    "shortName": "Lumen",
+    "overallRating": 3.4,
+    "page_found": 14
+  },
+  {
+    "id": 8,
+    "shortName": "American Airlines",
+    "overallRating": 3.6,
+    "page_found": 14
+  },
+  {
+    "id": 9757,
+    "shortName": "Indra",
+    "overallRating": 3.6,
+    "page_found": 15
+  },
+  {
+    "id": 67,
+    "shortName": "Avon",
+    "overallRating": 3.9,
+    "page_found": 15
+  },
+  {
+    "id": 64,
+    "shortName": "ADP",
+    "overallRating": 3.8,
+    "page_found": 15
+  },
+  {
+    "id": 1930341,
+    "shortName": "Syneos Health ",
+    "overallRating": 3.7,
+    "page_found": 15
+  },
+  {
+    "id": 982213,
+    "shortName": "Dentsu",
+    "overallRating": 3.6,
+    "page_found": 15
+  },
+  {
+    "id": 1259396,
+    "shortName": "S&P Global",
+    "overallRating": 4.1,
+    "page_found": 15
+  },
+  {
+    "id": 2421499,
+    "shortName": "Ejercito Argentino",
+    "overallRating": 4.1,
+    "page_found": 15
+  },
+  {
+    "id": 5876,
+    "shortName": "Banco Galicia",
+    "overallRating": 4.3,
+    "page_found": 15
+  },
+  {
+    "id": 4212,
+    "shortName": "NCR",
+    "overallRating": 3.4,
+    "page_found": 15
+  },
+  {
+    "id": 40260,
+    "shortName": "Paramount",
+    "overallRating": 3.7,
+    "page_found": 15
+  },
+  {
+    "id": 10351,
+    "shortName": "Sodexo",
+    "overallRating": 3.5,
+    "page_found": 16
+  },
+  {
+    "id": 365,
+    "shortName": "Johnson Controls",
+    "overallRating": 3.7,
+    "page_found": 16
+  },
+  {
+    "id": 141439,
+    "shortName": "everis",
+    "overallRating": 3.7,
+    "page_found": 16
+  },
+  {
+    "id": 114397,
+    "shortName": "Avature",
+    "overallRating": 3.7,
+    "page_found": 16
+  },
+  {
+    "id": 525,
+    "shortName": "Pfizer",
+    "overallRating": 3.8,
+    "page_found": 16
+  },
+  {
+    "id": 2483694,
+    "shortName": "Mostaza",
+    "overallRating": 3.4,
+    "page_found": 16
+  },
+  {
+    "id": 3600,
+    "shortName": "Reckitt",
+    "overallRating": 3.8,
+    "page_found": 16
+  },
+  {
+    "id": 14655,
+    "shortName": "Western Union",
+    "overallRating": 3.4,
+    "page_found": 16
+  },
+  {
+    "id": 246,
+    "shortName": "FedEx",
+    "overallRating": 3.9,
+    "page_found": 16
+  },
+  {
+    "id": 465818,
+    "shortName": "CBRE",
+    "overallRating": 3.9,
+    "page_found": 16
+  },
+  {
+    "id": 10832,
+    "shortName": "Compass Group",
+    "overallRating": 3.5,
+    "page_found": 17
+  },
+  {
+    "id": 13793,
+    "shortName": "Assurant",
+    "overallRating": 3.6,
+    "page_found": 17
+  },
+  {
+    "id": 2893,
+    "shortName": "McKinsey & Company",
+    "overallRating": 4.1,
+    "page_found": 17
+  },
+  {
+    "id": 582526,
+    "shortName": "Zurich Insurance",
+    "overallRating": 4.1,
+    "page_found": 17
+  },
+  {
+    "id": 3867,
+    "shortName": "RE/MAX",
+    "overallRating": 4.2,
+    "page_found": 17
+  },
+  {
+    "id": 6667,
+    "shortName": "Novartis",
+    "overallRating": 4.0,
+    "page_found": 17
+  },
+  {
+    "id": 10332,
+    "shortName": "Air Liquide",
+    "overallRating": 3.8,
+    "page_found": 17
+  },
+  {
+    "id": 8874,
+    "shortName": "Bank of America",
+    "overallRating": 3.9,
+    "page_found": 17
+  },
+  {
+    "id": 10600,
+    "shortName": "SGS",
+    "overallRating": 3.3,
+    "page_found": 17
+  },
+  {
+    "id": 1038,
+    "shortName": "TotalEnergies",
+    "overallRating": 4.0,
+    "page_found": 17
+  },
+  {
+    "id": 1056222,
+    "shortName": "Cervecería y Maltería Quilmes",
+    "overallRating": 4.1,
+    "page_found": 18
+  },
+  {
+    "id": 1118894,
+    "shortName": "Particular",
+    "overallRating": 4.3,
+    "page_found": 18
+  },
+  {
+    "id": 782953,
+    "shortName": "Coppel",
+    "overallRating": 3.9,
+    "page_found": 18
+  },
+  {
+    "id": 5529631,
+    "shortName": "SelfEmployed.com",
+    "overallRating": 4.4,
+    "page_found": 18
+  },
+  {
+    "id": 5182641,
+    "shortName": "Anonymous",
+    "overallRating": 3.5,
+    "page_found": 18
+  },
+  {
+    "id": 7790,
+    "shortName": "Marriott International",
+    "overallRating": 3.9,
+    "page_found": 18
+  },
+  {
+    "id": 130,
+    "shortName": "ABC",
+    "overallRating": 3.9,
+    "page_found": 18
+  },
+  {
+    "id": 207,
+    "shortName": "Dow",
+    "overallRating": 4.1,
+    "page_found": 18
+  },
+  {
+    "id": 32824,
+    "shortName": "TransPerfect",
+    "overallRating": 3.0,
+    "page_found": 18
+  },
+  {
+    "id": 224811,
+    "shortName": "Kantar",
+    "overallRating": 3.6,
+    "page_found": 18
+  },
+  {
+    "id": 38615,
+    "shortName": "DHL Express",
+    "overallRating": 3.9,
+    "page_found": 19
+  },
+  {
+    "id": 3012,
+    "shortName": "UPS",
+    "overallRating": 3.5,
+    "page_found": 19
+  },
+  {
+    "id": 493324,
+    "shortName": "Techint",
+    "overallRating": 4.2,
+    "page_found": 19
+  },
+  {
+    "id": 20114,
+    "shortName": "Veolia",
+    "overallRating": 3.9,
+    "page_found": 19
+  },
+  {
+    "id": 8378,
+    "shortName": "BAT",
+    "overallRating": 4.0,
+    "page_found": 19
+  },
+  {
+    "id": 233751,
+    "shortName": "Endava",
+    "overallRating": 3.7,
+    "page_found": 19
+  },
+  {
+    "id": 1902699,
+    "shortName": "Baker Hughes",
+    "overallRating": 3.9,
+    "page_found": 19
+  },
+  {
+    "id": 949275,
+    "shortName": "Apex America",
+    "overallRating": 3.6,
+    "page_found": 19
+  },
+  {
+    "id": 436,
+    "shortName": "Medtronic",
+    "overallRating": 3.8,
+    "page_found": 19
+  },
+  {
+    "id": 1164794,
+    "shortName": "Movistar",
+    "overallRating": 3.8,
+    "page_found": 19
+  },
+  {
+    "id": 8344,
+    "shortName": "ICON",
+    "overallRating": 3.6,
+    "page_found": 20
+  },
+  {
+    "id": 115506,
+    "shortName": "ZS Associates",
+    "overallRating": 3.5,
+    "page_found": 20
+  },
+  {
+    "id": 3612,
+    "shortName": "Cinemark",
+    "overallRating": 3.6,
+    "page_found": 20
+  },
+  {
+    "id": 476658,
+    "shortName": "Ministerio de Educación",
+    "overallRating": 3.8,
+    "page_found": 20
+  },
+  {
+    "id": 732,
+    "shortName": "Whirlpool Corporation",
+    "overallRating": 3.7,
+    "page_found": 20
+  },
+  {
+    "id": 167,
+    "shortName": "CA Technologies",
+    "overallRating": 3.3,
+    "page_found": 20
+  },
+  {
+    "id": 3353,
+    "shortName": "Robert Bosch",
+    "overallRating": 4.2,
+    "page_found": 20
+  },
+  {
+    "id": 2482821,
+    "shortName": "Swiss Medical Group (Argentina)",
+    "overallRating": 3.3,
+    "page_found": 20
+  },
+  {
+    "id": 2949002,
+    "shortName": "Wunderman Thompson",
+    "overallRating": 3.6,
+    "page_found": 20
+  },
+  {
+    "id": 53,
+    "shortName": "Aon",
+    "overallRating": 3.8,
+    "page_found": 20
+  }
+]
