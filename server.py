@@ -241,6 +241,7 @@ def get_worst_companies():
     
     cursor.execute('''
         SELECT 
+            company_id,
             company_name,
             AVG(average_rating) as avg_score,
             COUNT(*) as review_count,
@@ -258,17 +259,31 @@ def get_worst_companies():
     
     ranking = []
     for i, row in enumerate(cursor.fetchall(), 1):
+        company_id = row[0]
+        company_name = row[1]
+        
+        # Obtener todas las reviews de esta empresa para rotación
+        cursor.execute('''
+            SELECT comment FROM reviews 
+            WHERE company_id = ? 
+            ORDER BY timestamp DESC 
+            LIMIT 5
+        ''', (company_id,))
+        
+        all_comments = [comment_row[0] for comment_row in cursor.fetchall()]
+        
         ranking.append({
             'position': i,
-            'company_name': row[0],
-            'average_score': round(row[1], 1),
-            'review_count': row[2],
-            'latest_comment': row[3],
+            'company_name': company_name,
+            'average_score': round(row[2], 1),
+            'review_count': row[3],
+            'latest_comment': row[4],
+            'all_comments': all_comments,  # Todas las reviews para rotación
             'avg_ratings': {
-                'general': round(row[4], 1) if row[4] else 0,
-                'management': round(row[5], 1) if row[5] else 0,
-                'salary': round(row[6], 1) if row[6] else 0,
-                'environment': round(row[7], 1) if row[7] else 0
+                'general': round(row[5], 1) if row[5] else 0,
+                'management': round(row[6], 1) if row[6] else 0,
+                'salary': round(row[7], 1) if row[7] else 0,
+                'environment': round(row[8], 1) if row[8] else 0
             }
         })
     

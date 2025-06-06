@@ -413,6 +413,10 @@ function resetRatings() {
 let currentReviewsLimit = 5;
 let allReviewsLoaded = false;
 
+// Variables para paginación del ranking
+let currentRankingLimit = 10;
+let allRankingLoaded = false;
+
 // Actualizar reviews recientes
 async function updateRecentBombs(limit = 5) {
     try {
@@ -508,11 +512,43 @@ function loadMoreReviews() {
     updateRecentBombs(currentReviewsLimit);
 }
 
+// Cargar más ranking
+function loadMoreRanking() {
+    currentRankingLimit += 10;
+    updateWorstCompaniesRanking(currentRankingLimit);
+}
+
+// Rotación automática de reviews en el ranking
+function startReviewRotation() {
+    const rotatingReviews = document.querySelectorAll('.rotating-review');
+    
+    rotatingReviews.forEach(reviewElement => {
+        try {
+            const comments = JSON.parse(reviewElement.dataset.comments);
+            if (comments && comments.length > 1) {
+                // Iniciar rotación cada 4 segundos
+                setInterval(() => {
+                    let currentIndex = parseInt(reviewElement.dataset.current) || 0;
+                    currentIndex = (currentIndex + 1) % comments.length;
+                    
+                    reviewElement.dataset.current = currentIndex;
+                    reviewElement.innerHTML = `
+                        "${comments[currentIndex]}"
+                        <span class="review-indicator">(${currentIndex + 1}/${comments.length})</span>
+                    `;
+                }, 4000);
+            }
+        } catch (error) {
+            console.error('Error en rotación de reviews:', error);
+        }
+    });
+}
+
 // Actualizar ranking de peores empresas
-async function updateWorstCompaniesRanking() {
+async function updateWorstCompaniesRanking(limit = 10) {
     try {
-        console.log('Cargando ranking de peores empresas...');
-        const response = await fetch('/api/ranking/worst?limit=10');
+        console.log(`Cargando ranking de peores empresas (limit: ${limit})...`);
+        const response = await fetch(`/api/ranking/worst?limit=${limit}`);
         
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -538,7 +574,7 @@ async function updateWorstCompaniesRanking() {
             return;
         }
 
-        const rankingHTML = ranking.map(item => {
+        const rankingHTML = ranking.map((item, index) => {
             const positionClass = item.position <= 3 ? ['first', 'second', 'third'][item.position - 1] : '';
             const topClass = item.position <= 3 ? 'top-3' : '';
             const medal = item.position <= 3 ? ['🥇', '🥈', '🥉'][item.position - 1] : '';
@@ -546,6 +582,17 @@ async function updateWorstCompaniesRanking() {
             
             // Crear detalle de ratings promedio
             const avgRatingsDetail = createRatingsDetail(item.avg_ratings, true);
+
+            // ID único para rotación de reviews
+            const reviewId = `ranking-review-${index}`;
+            
+            // Si hay múltiples reviews, agregar rotación
+            const reviewSection = item.all_comments && item.all_comments.length > 1 ? 
+                `<div class="ranking-comment rotating-review" id="${reviewId}" data-comments='${JSON.stringify(item.all_comments)}' data-current="0">
+                    "${item.all_comments[0]}"
+                    <span class="review-indicator">(1/${item.all_comments.length})</span>
+                </div>` :
+                `<div class="ranking-comment">"${item.latest_comment}"</div>`;
 
             return `
                 <div class="ranking-item ${topClass}">
@@ -557,7 +604,7 @@ async function updateWorstCompaniesRanking() {
                             <span>📊 ${item.review_count} review${item.review_count > 1 ? 's' : ''}</span>
                         </div>
                         ${avgRatingsDetail}
-                        <div class="ranking-comment">"${item.latest_comment}"</div>
+                        ${reviewSection}
                     </div>
                     <div class="ranking-rating">
                         <div class="ranking-score">${item.average_score}</div>
@@ -568,7 +615,26 @@ async function updateWorstCompaniesRanking() {
             `;
         }).join('');
 
-        rankingContainer.innerHTML = rankingHTML;
+        // Verificar si hay más empresas para cargar
+        allRankingLoaded = ranking.length < limit;
+        
+        // Agregar botón "Ver más" si no están todas cargadas
+        const showMoreButton = !allRankingLoaded ? `
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button onclick="loadMoreRanking()" class="show-more-btn">
+                    <i class="fas fa-trophy"></i> Ver más empresas
+                </button>
+            </div>
+        ` : `
+            <div style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">
+                <i class="fas fa-check-circle"></i> No hay más empresas por ahora
+            </div>
+        `;
+
+        rankingContainer.innerHTML = rankingHTML + showMoreButton;
+        
+        // Inicializar rotación de reviews después de insertar el HTML
+        setTimeout(() => startReviewRotation(), 100);
     } catch (error) {
         console.error('Error cargando ranking:', error);
         const rankingContainer = document.getElementById('worstCompaniesRanking');
@@ -914,4 +980,5 @@ window.selectCompanyForFilter = selectCompanyForFilter;
 window.submitReview = submitReview;
 window.showAddCompanyForm = showAddCompanyForm;
 window.hideAddCompanyForm = hideAddCompanyForm;
-window.submitNewCompany = submitNewCompany; 
+window.submitNewCompany = submitNewCompany;
+window.loadMoreRanking = loadMoreRanking; 
