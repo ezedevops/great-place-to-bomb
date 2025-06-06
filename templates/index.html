@@ -613,6 +613,42 @@
             animation-play-state: paused;
         }
 
+        .ranking-comment-container {
+            position: relative;
+        }
+
+        .review-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.5rem;
+            gap: 0.5rem;
+        }
+
+        .review-nav-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .review-nav-btn:hover {
+            background: #ff3838;
+            transform: scale(1.1);
+        }
+
+        .review-nav-btn:active {
+            transform: scale(0.95);
+        }
+
         .ranking-item {
             display: flex;
             align-items: center;

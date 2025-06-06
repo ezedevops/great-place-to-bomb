@@ -518,30 +518,35 @@ function loadMoreRanking() {
     updateWorstCompaniesRanking(currentRankingLimit);
 }
 
-// Rotación automática de reviews en el ranking
-function startReviewRotation() {
-    const rotatingReviews = document.querySelectorAll('.rotating-review');
+// Función para cambiar review manualmente
+function changeReview(reviewId, direction) {
+    const reviewElement = document.getElementById(reviewId);
+    if (!reviewElement) return;
     
-    rotatingReviews.forEach(reviewElement => {
-        try {
-            const comments = JSON.parse(reviewElement.dataset.comments);
-            if (comments && comments.length > 1) {
-                // Iniciar rotación cada 4 segundos
-                setInterval(() => {
-                    let currentIndex = parseInt(reviewElement.dataset.current) || 0;
-                    currentIndex = (currentIndex + 1) % comments.length;
-                    
-                    reviewElement.dataset.current = currentIndex;
-                    reviewElement.innerHTML = `
-                        "${comments[currentIndex]}"
-                        <span class="review-indicator">(${currentIndex + 1}/${comments.length})</span>
-                    `;
-                }, 4000);
-            }
-        } catch (error) {
-            console.error('Error en rotación de reviews:', error);
+    try {
+        const comments = JSON.parse(reviewElement.dataset.comments);
+        if (!comments || comments.length <= 1) return;
+        
+        let currentIndex = parseInt(reviewElement.dataset.current) || 0;
+        currentIndex = (currentIndex + direction + comments.length) % comments.length;
+        
+        reviewElement.dataset.current = currentIndex;
+        reviewElement.innerHTML = `"${comments[currentIndex]}"`;
+        
+        // Actualizar indicador
+        const indicator = reviewElement.parentElement.querySelector('.review-indicator');
+        if (indicator) {
+            indicator.textContent = `(${currentIndex + 1}/${comments.length})`;
         }
-    });
+    } catch (error) {
+        console.error('Error cambiando review:', error);
+    }
+}
+
+// Rotación automática de reviews en el ranking (deshabilitada por ahora)
+function startReviewRotation() {
+    // Por ahora solo navegación manual, se puede activar después si se quiere
+    console.log('Navegación manual de reviews activada');
 }
 
 // Actualizar ranking de peores empresas
@@ -586,11 +591,17 @@ async function updateWorstCompaniesRanking(limit = 10) {
             // ID único para rotación de reviews
             const reviewId = `ranking-review-${index}`;
             
-            // Si hay múltiples reviews, agregar rotación
+            // Si hay múltiples reviews, agregar navegación
             const reviewSection = item.all_comments && item.all_comments.length > 1 ? 
-                `<div class="ranking-comment rotating-review" id="${reviewId}" data-comments='${JSON.stringify(item.all_comments)}' data-current="0">
-                    "${item.all_comments[0]}"
-                    <span class="review-indicator">(1/${item.all_comments.length})</span>
+                `<div class="ranking-comment-container">
+                    <div class="ranking-comment rotating-review" id="${reviewId}" data-comments='${JSON.stringify(item.all_comments)}' data-current="0">
+                        "${item.all_comments[0]}"
+                    </div>
+                    <div class="review-navigation">
+                        <button class="review-nav-btn" onclick="changeReview('${reviewId}', -1)">←</button>
+                        <span class="review-indicator">(1/${item.all_comments.length})</span>
+                        <button class="review-nav-btn" onclick="changeReview('${reviewId}', 1)">→</button>
+                    </div>
                 </div>` :
                 `<div class="ranking-comment">"${item.latest_comment}"</div>`;
 
@@ -981,4 +992,5 @@ window.submitReview = submitReview;
 window.showAddCompanyForm = showAddCompanyForm;
 window.hideAddCompanyForm = hideAddCompanyForm;
 window.submitNewCompany = submitNewCompany;
-window.loadMoreRanking = loadMoreRanking; 
+window.loadMoreRanking = loadMoreRanking;
+window.changeReview = changeReview; 
